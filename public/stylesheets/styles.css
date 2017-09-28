@@ -1,0 +1,24 @@
+canvas {
+	overflow: hidden;
+	display: block;
+}
+.game-image {
+	display: none;
+}
+.div-save {
+	position: fixed;
+	top:10px;
+	left:10px;
+}
+/*Mobile Styles*/
+@media only screen and (max-width: 340px){
+
+}
+/*Large mobiles*/
+@media only screen and (min-width: 341px) and (max-width: 484px){
+
+}
+/*Tablets*/
+@media only screen and (min-width: 485px) and (max-width: 800px){
+
+}

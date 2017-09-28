@@ -1,0 +1,23 @@
+doctype html
+html
+	head
+		title= Circles
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(rel='stylesheet', href='/stylesheets/reset.css')
+		link(rel='stylesheet', href='/stylesheets/normalize.css')
+		link(rel='stylesheet', href='/stylesheets/styles.css')
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src='js/AppClient.js')
+	body
+		div(class='div-save')
+			label(for = "save") Save file as:
+			input(id = "map-name" name = "save" value = "some_circles")
+			input(id = "btn-save" type = "submit" value = "Save")
+			br
+			br
+			label(for = "load") Load file:
+			select(id='select-load')
+				each val in collectionNames
+					option(value=val.name) #{val.name}
+			input(id = "btn-load" type = "submit" value = "Load")
+		canvas(id='canvas')
