@@ -1,3 +1,6 @@
+# About
+A canvas based project in which the user can create and drag yellow circles, and save/load them from a MongoDB.
+
 # Instructions
 1. Navigate to the root directory (where package.json exists) and run the following command on the command-line/terminal:
 ```
