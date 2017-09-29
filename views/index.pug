@@ -21,3 +21,32 @@ html
 					option(value=val.name) #{val.name}
 			input(id = "btn-load" type = "submit" value = "Load")
 		canvas(id='canvas')
+		script.
+			$( document ).ready(function() {
+				var mapName = document.getElementById('map-name');
+				$('#btn-save').on('click', function(e){
+					mapName.value = mapName.value.replace(/[^\w]/gi, '');
+					e.preventDefault();
+					console.log("Submitted");
+					$.ajax({
+					  type: "POST",
+					  url: '/save',
+					  //how to get circles?
+					  data: JSON.stringify({mapName:mapName.value, circles:circles}),
+					  success: function(s){
+					  	console.log("success",s);
+					  	//append mapname to load options list if it is not already there
+					  	if($("#select-load option:contains("+mapName.value+")").length ==0){
+
+						$("#select-load").append(new Option(mapName.value, mapName.value));
+
+						}
+					  },
+					  contentType: 'application/json',
+					  dataType: "text",
+					  error: function(data){
+					    console.log("fail");
+					  }
+					});
+				});
+			});

@@ -1,5 +1,7 @@
 //add <preference name="Orientation" value="landscape" /> to the config.xml file to lock orientation to landscape
 //https://cordova.apache.org/docs/en/3.1.0/config_ref/index.html
+//where we store circles x,y,radius
+var circles = [];//global so that the pug script can access it
 var App = (function(){
 	'use strict';
 
@@ -105,8 +107,7 @@ var App = (function(){
 		  ctx.lineWidth = 5;
 		  ctx.stroke();
 		};
-		//where we store circles x,y,radius
-		var circles = [];
+		
 		//ID in circles array of clicked circle
 		var circleClickedID = -1;
 		//circle object clicked/dragging.
@@ -222,42 +223,7 @@ var App = (function(){
 				ctx = canvas.getContext('2d');
 				onWindowResized();
 				initGame();
-				var mapName = document.getElementById('map-name');
 				var selectEl = document.getElementById('select-load');
-				//var inputMapName = $('#map-name');
-				//var btnSave = ;
-				//console.log(btnSave);
-				$('#btn-save').on('click', function(e){
-					mapName.value = mapName.value.replace(/[^\w]/gi, '');
-					e.preventDefault();
-					console.log("Submitted");
-					$.ajax({
-					  type: "POST",
-					  url: '/save',
-					  data: JSON.stringify({mapName:mapName.value, circles:circles}),
-					  success: function(s){
-					  	console.log("success",s);
-					  	//append mapname to load options list if it is not already there
-					  	if($("#select-load option:contains("+mapName.value+")").length ==0){
-
-						$("#select-load").append(new Option(mapName.value, mapName.value));
-
-						}
-						/*
-					  	var opt = document.createElement("option");
-						var t = document.createTextNode(mapName.value); 
-						opt.appendChild(t);
-						opt.value = mapName.value;
-						selectEl.appendChild(opt);
-					  	*/
-					  },
-					  contentType: 'application/json',
-					  dataType: "text",
-					  error: function(data){
-					    console.log("fail");
-					  }
-					});
-				});
 				$('#btn-load').on('click', function(e){
 					var selVal = selectEl.value;
 					$.ajax({
