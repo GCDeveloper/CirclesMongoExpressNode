@@ -7,3 +7,8 @@ A canvas based project in which the user can create and drag yellow circles, and
 npm install
 ```
 2. Make sure you have an installed MongoDB and that it is running in a seperate terminal, with mongod. Alternatively, change the dbURL inside app.js to point towards your chosen database. 
+
+3. Run the app with:
+```
+npm start
+```
